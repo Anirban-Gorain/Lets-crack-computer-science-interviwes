@@ -1,7 +1,7 @@
 *.exe
 *.o
-/input.txt
-/output.txt
-/.gitignore
-/Test
-/.vscode
+input.txt
+output.txt
+.gitignore
+Test/*
+.vscode/*

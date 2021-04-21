@@ -12,7 +12,7 @@ class Solution
 		int _n = nums.size();
 		int _c1, _foc1;
 		int _c2, _foc2;
-		int _can_Be_Put = 0;
+		int _can_Be_Put = ;
 
 		for(int i = 0; i < _n; i++)
 		{

@@ -133,6 +133,35 @@ class Solution
 
         return _result;
     }
+
+    // Time complexity O(n^2) and space complexity O(1)
+
+    int singleNumber(vector<int> & nums)
+    {    
+	
+		sort(nums.begin(), nums.end());
+		int _count;
+		int _hold = nums[0];
+
+		for(int _first = 0; _first < nums.size(); _first += 3)
+		{
+			_count = 0;
+			for(int _check = _first + 1; (_check < nums.size()) && (_count != 2); _check++)
+			{
+				if(_hold != nums[_check])
+				{
+					return nums[_check - 1];
+				}
+
+				_count++;
+			}
+
+			if((_first < nums.size()) && (_first != (nums.size() - 1)))
+				_hold = nums[_first + 3];
+		}
+
+		return nums[nums.size() - 1];
+	}
 };
 
 int main(void)

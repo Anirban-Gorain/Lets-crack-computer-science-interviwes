@@ -36,21 +36,22 @@ void _fio(void)
 int _get_Next_Position(vector <int> & nums, int _terverse, int _direction)
 {
 
-    int _next_Direction = (nums.at(_terverse) >= 0);
-
-    if (_direction != _next_Direction)
-    {
-        // In the forward direction backward direction not allowed, In the backward direction forward direction not allowed.
-        return -1;
-    }
-
     // Because array is circular.
+    
     int _size_Of_The_Vector = nums.size();
     int _next_Location = ((_terverse + nums.at(_terverse)) % _size_Of_The_Vector);
 
     if (_next_Location < 0)
     {
         _next_Location = _next_Location + nums.size();
+    }
+
+    int _next_Direction = (nums.at(_next_Location) >= 0);
+
+    if (_direction != _next_Direction)
+    {
+        // In the forward direction backward direction not allowed, In the backward direction forward direction not allowed.
+        return -1;
     }
 
     if (_next_Location == _terverse)

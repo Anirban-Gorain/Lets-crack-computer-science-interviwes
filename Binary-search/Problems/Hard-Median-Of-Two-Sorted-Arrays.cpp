@@ -15,15 +15,13 @@ using namespace std;
 #define pq(x) priority_queue<x>
 #define setbits(x) __builtin_popcountll(x)
 #define zrobits(x) __builtin_ctzll(x)
-#define sp(x, y) fixed << setprecision(y) << x
-#define dma(arr, n, type) type *arr = new type[n];
-#define w(x) \
-    int x;   \
-    while (x--)
-#define sq(x) x *x
+#define sp(x, y) fixed<<setprecision(y)<<x
+#define dma(arr,n,type) type *arr=new type[n];
+#define w(x) int x; while(x--)
+#define sq(x) x*x
 #define its(x) (string) #x
-#define sti(x) (int)x
-#define fti(x) (int)x
+#define sti(x) (int) x
+#define fti(x) (int) x
 #define ONLINE_JUDGE -1
 #define deb(x) cout << #x << " = " << x << endl;
 

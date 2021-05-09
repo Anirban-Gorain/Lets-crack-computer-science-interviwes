@@ -61,6 +61,31 @@ int maximumSumSubarray(int K, vector<int> &Arr , int N){
     return _max_Sum;
 }
 
+// Time complexity O(n) and space complexity O(1).
+
+int maximumSumSubarray(int K, vector<int> & Arr , int N)
+{
+    int _start_W = 0, _end_W = 0, _max = INT_MIN, _sum = 0;
+
+    while (_end_W < Arr.size())
+    {
+        _sum = _sum + Arr[_end_W];
+
+        if((_end_W - _start_W + 1) < K)
+        {
+            _end_W++;
+        }
+        else if((_end_W - _start_W + 1) == K)
+        {
+            _max = (_sum > _max) ? _sum : _max;
+            _sum = _sum - Arr[_start_W];
+            _start_W++;
+            _end_W++;
+        }
+    }
+    return _max;
+}
+
 int main(void)
 {
 

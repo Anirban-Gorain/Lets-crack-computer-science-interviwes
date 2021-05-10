@@ -39,6 +39,7 @@ class Solution
 
     int climbStairs(int n)
     {
+        _print_Steps(n + 1, "");
         return _no_Of_Steps(++n);
     }
 
@@ -58,6 +59,51 @@ class Solution
 
         return _total_No_Of_Way;
     }
+
+    // Print all steps.
+
+    void _print_Steps(int _from_Ground, string _output)
+    {
+        if(_from_Ground == 1 || _from_Ground < 0)
+        {
+           cout << _output << endl;
+           return;
+        }
+
+        _print_Steps(_from_Ground - 1, _output + "1");
+
+        if(_from_Ground - 2 > 0)
+            _print_Steps(_from_Ground - 2, _output + "2");
+    }
+
+    // Return result
+
+    vector <string> _return_Steps(int _from_Ground, string _output)
+    {
+        if(_from_Ground == 1 || _from_Ground < 0)
+        {
+           vector <string> _send;
+           _send.push_back(_output);
+
+           return _send;
+        }
+
+        vector <string> _temp;
+        vector <string> _main_Result;
+
+        _main_Result = _return_Steps(_from_Ground - 1, _output + "1");
+
+        if(_from_Ground - 2 > 0)
+        {
+            _temp = _return_Steps(_from_Ground - 2, _output + "2");
+
+            for(auto _ite = _temp.begin(); _ite != _temp.end(); _ite++)
+            {
+                _main_Result.push_back(*_ite);
+            }
+        }
+        
+    }
 };
 
 int main(void)
@@ -71,7 +117,7 @@ int main(void)
     // #endif
 
     Solution _test;
-    cout << _test.climbStairs(44);
+    cout << _test.climbStairs(10);
 
     return 0;
 

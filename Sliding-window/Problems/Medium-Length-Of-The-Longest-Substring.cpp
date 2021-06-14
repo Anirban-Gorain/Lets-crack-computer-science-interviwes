@@ -23,6 +23,7 @@ using namespace std;
 #define sti(x) (int) x
 #define fti(x) (int) x
 #define ONLINE_JUDGE -1
+#define loop(_x, _s ,_n) for(int _x = _s; _x < _n; ++ _x)
 #define deb(x) cout << #x << " = " << x << endl;
 
 void _fio(void)
@@ -57,6 +58,9 @@ int _is_Substring_Contain_Repeating_Char(string _substr)
 
 int longestUniqueSubstr_Brute(string S)
 {
+    if(S.length() == 0)
+        return 0;
+
     string _substr;
     int _max = INT32_MIN;
 
@@ -86,55 +90,51 @@ int longestUniqueSubstr_Brute(string S)
 
 // Optimization.
 
-int longestUniqueSubsttr(string S)
+class Solution
 {
-    if(S.length() == 0)
+    public:
+
+    int lengthOfLongestSubstring(string s)
     {
-        return 0;
-    }    
+        if(s.length() == 0)
+            return 0;
+        
+        int _len = s.length();
+        int _fp = 0;
+        int _lp = 0;
+        int _ans = INT_MIN;
 
-    int _length, _start, _end, _cal_Result, _max, _substr_Length;
-    string _substr;
+        unordered_map <char, int> _data;
 
-    _length = S.length();
-    _start = 0;
-    _end = 0;
-    _max = INT32_MIN;
-
-    while(_end < _length)
-    {
-        _substr = S.substr(_start, _end + 1);
-        _cal_Result = _is_Substring_Contain_Repeating_Char(_substr);
-
-        // Calculation.
-
-        if(_cal_Result == 0)
+        while(_lp < _len)
         {
-            _substr_Length = _substr.length();
+            _data[s[_lp]]++;
 
-            if(_substr_Length > _max)
+            if(_data.size() == _lp - _fp + 1)
             {
-                _max = _substr_Length;
+                _ans = max(_ans, _lp - _fp + 1);
+                _lp++;
             }
-
-            _end++;
-        }
-        else if(_cal_Result == 1)
-        {
-            // Removing calculations.
-
-            while(_cal_Result == 1)
+            else if(_data.size() < _lp - _fp + 1)
             {
-                _start++;
-                _substr = S.substr(_start, _end + 1);
-                _cal_Result = _is_Substring_Contain_Repeating_Char(_substr);
+                while (_data.size() < _lp - _fp + 1)
+                {
+                    _data[s[_fp]]--;
+
+                    if(_data[s[_fp]] == 0)
+                    {
+                        _data.erase(s[_fp]);
+                    }
+
+                    _fp++;
+                }
+                _lp++;
             }
         }
 
+        return _ans;
     }
-
-    return (_max < 0) ? 0 : _max;
-}
+};
 
 int main(void)
 {
@@ -146,7 +146,8 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     // #endif
 
-    cout << longestUniqueSubsttr("ab");
+    Solution _test;
+    cout << _test.lengthOfLongestSubstring("pwwekw");
 
     return 0;
 

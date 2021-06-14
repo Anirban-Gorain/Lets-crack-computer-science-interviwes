@@ -39,33 +39,15 @@ class Solution
 
     void moveZeroes(vector<int> & nums)
     {
-        int _index = -1;
-        int _zeros = 0;
-        int _size = nums.size();
+        int _count_Of_Non_Zero = 0;
 
-        for(int _i = 0; _i < _size; _i++)
+        for(int _i = 0; _i < nums.size(); _i++)
         {
-            if(_index != -1 && nums[_i] != 0)
+            if(nums[_i] != 0)
             {
-                nums[_index] = nums[_i];
-                _index++;
+                swap(nums[_count_Of_Non_Zero], nums[_i]);
+                _count_Of_Non_Zero++;
             }
-            else if(nums[_i] == 0 && _index == -1)
-            {
-                _index = _i;
-                _zeros++;
-            }
-            else if(nums[_i] == 0)
-            {
-                _zeros++;
-            }
-        }
-
-        // Adding the zeros
-
-        for(int _i = _size - _zeros; _i < _size; _i++)
-        {
-            nums[_i] = 0;
         }
     }
 };
@@ -80,7 +62,15 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     // #endif
 
-    
+    Solution _abc;
+    v(int) _x = {0, 0, 12, 0, 5, 8};
+
+    _abc.moveZeroes(_x);
+
+    for(int _i = 0; _i < _x.size(); _i++)
+    {
+        cout << _x[_i] << " ";
+    }
 
     return 0;
 

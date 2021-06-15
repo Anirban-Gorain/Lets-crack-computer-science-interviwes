@@ -36,28 +36,32 @@ void _fio(void)
 class Solution 
 {
     public:
-
+    
     int removeDuplicates(vector<int> & nums)
     {
-        int _current_Element = INT_MIN;
-        int _result_Index = 0;
-        int _size = 0;
-        int _len = nums.size();
+        if(nums.size() == 0)
+                return 0;
+        
+        int _c_E = nums[0];
+        int _pi = 0;
+        int _n = nums.size();
+        int _count = 0;
 
-        for(int _i = 0; _i < _len; _i++)
+        for(int _i = 0; _i < _n - 1; _i++)
         {
-            if(nums[_i] != _current_Element)
+            if(!(nums[_i] == nums[_i+1]))
             {
-                _current_Element = nums[_i];
-                nums[_result_Index] = _current_Element;
-                cout << _current_Element << " ";
-                _result_Index++;
-
-                _size++;
+                nums[_pi] = _c_E;
+                _pi++;
+                _c_E = nums[_i+1];
+                _count++;
             }
         }
 
-        return _size;
+        nums[_pi] = _c_E;
+        _count++;
+        
+        return _count;
     }
 };
 

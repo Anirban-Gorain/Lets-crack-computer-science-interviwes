@@ -36,9 +36,10 @@ void _fio(void)
 
 // Time complexity O(n^2) and Space complexity O(1).
 
+/*
 int _max_Diff(int _arr, int _n)
 {
-    /*
+    
     
         for(_i = 0 to _n)
         {
@@ -48,8 +49,9 @@ int _max_Diff(int _arr, int _n)
             }
         }
     
-     */
+    
 }
+*/
 
 // T/C O(n) and S/C O(1).
 

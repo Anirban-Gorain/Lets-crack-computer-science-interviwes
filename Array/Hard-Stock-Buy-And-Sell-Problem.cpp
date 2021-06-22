@@ -34,7 +34,7 @@ void _fio(void)
 
 }
 
-// T/C ? & S/C ?
+// T/C 2^n & S/C ?
 
 int _maximize_The_Profit(int _arr[], int _start, int _end)
 {
@@ -51,7 +51,7 @@ int _maximize_The_Profit(int _arr[], int _start, int _end)
         {
            if(_arr[_j] > _arr[_i])
            {
-                int _current_Profit = _arr[_j] - _arr[_i] + _maximize_The_Profit(_arr, _j + 1, _end);
+                int _current_Profit = _arr[_j] - _arr[_i] + _maximize_The_Profit(_arr, _j + 1, _end) +  _maximize_The_Profit(_arr, _start, _i - 1);
 
                 _profit = max(_current_Profit, _profit);
            }
@@ -72,7 +72,7 @@ class Solution
         int _profit = 0;
         int _l = prices.size();
 
-        loop(_i, 0, _l)
+        loop(_i, 1, _l)
         {
             if(prices[_i] > prices[_i - 1])
             {

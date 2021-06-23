@@ -67,7 +67,7 @@ class Solution
         return _result;
     }
     
-    /* O(m + n) time complexity, And space complexity  O(_nums_1_Unique + _result) */
+    /* O(m + n) time complexity, And aux space  O(_nums_1_Unique + _result) */
 
     vector <int> intersection(vector <int> & nums1, vector <int> & nums2)
     {
@@ -75,7 +75,7 @@ class Solution
 
         unordered_set <int> _nums_1_Unique (nums1.begin(), nums1.end());
 
-        // Finding teh intersection.
+        // Finding the intersection.
 
         vector <int> _result;
 

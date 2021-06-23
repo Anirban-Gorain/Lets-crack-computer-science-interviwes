@@ -38,32 +38,29 @@ void _fio(void)
 int _count_Distinct_Element_Sol_1(int _elements[], int _size_Of_Elements)
 {
     int _index = 0;
-    int _hold_Current_Element;
-    bool _is_Starting = true;
+    int _hold_Current_Element = _elements[0];
 
     // Sorting the _element, O(n log(n)).
 
     sort(_elements, _elements + _size_Of_Elements);
 
-    int _count_Of_Distinct_Element = 0;
+    int _count_Of_Distinct_Element = 1;
 
-    for (int _index = 0; _index < _size_Of_Elements; _index++)
+    for (int _index = 1; _index < _size_Of_Elements; _index++)
     {
-        if (_hold_Current_Element == _elements[_index] && _is_Starting != true)
+        if (_hold_Current_Element == _elements[_index])
         {
             continue;
         }
 
         _hold_Current_Element = _elements[_index];
         _count_Of_Distinct_Element++;
-
-        _is_Starting = false;   
     }
 
     return _count_Of_Distinct_Element;
 }
 
-// O(n) time complexity, Space complexity O(n) because in worst case we ant to store n array's elements.
+// O(n) time complexity, Aux space O(n) because in worst case we have to store n array's elements.
 
 int _count_Distinct_Element_Sol_2(int _elements[], int _size_Of_Elements)
 {

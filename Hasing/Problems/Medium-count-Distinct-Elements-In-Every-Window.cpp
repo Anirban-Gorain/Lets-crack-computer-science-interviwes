@@ -37,58 +37,12 @@ void _fio(void)
 
 vector<int> dNums(vector <int> & A, int B)
 { 
-    int _size_Of_Elements = A.size();
-    vector <int> _result; 
+    // by two pointer approach, And calculating occurresess of all the window.
 
-    if(B > _size_Of_Elements)
-    {
-        return _result;
-    }
-
-    if(_size_Of_Elements == 1 && B == 1)
-    {
-        _result.push_back(1);
-        return _result;
-    }
-
-    int _accessor = 0;
-    int _no_Of_Windows = _size_Of_Elements - B + 1;
-    int _is_A_Window_Is_Completed = 1;
-    unordered_set <int> _elements;
-    int _count_Distinct_Element = 0;
-
-    if(_no_Of_Windows == _size_Of_Elements && B ==1)
-    {
-        for(int _terminate = 1; _terminate <= _no_Of_Windows; _terminate++)
-        {
-            _result.push_back(1);
-        }
-
-        return _result;
-    }
-    
-    for(int _remaining_No_Of_Windows = 1; _remaining_No_Of_Windows <= _no_Of_Windows; _accessor++, _is_A_Window_Is_Completed++)
-    {
-        if(_is_A_Window_Is_Completed == B + 1)
-        {
-            _accessor = _remaining_No_Of_Windows;
-            _remaining_No_Of_Windows++;
-            _elements.clear();
-            _result.push_back(_count_Distinct_Element);
-            _count_Distinct_Element = 0;
-            _is_A_Window_Is_Completed = 1;
-        }
-
-        if(_elements.find(A.at(_accessor)) == _elements.end())
-        {
-            _count_Distinct_Element++;
-        }
-
-        _elements.insert(A.at(_accessor));
-    }
-
-    return _result;
+    // T/C O(n), A/S O(1)
 }
+
+// T/C O(n), A/S O(2n)
 
 vector<int> dNums_Efficient(vector <int> & A, int B)
 {

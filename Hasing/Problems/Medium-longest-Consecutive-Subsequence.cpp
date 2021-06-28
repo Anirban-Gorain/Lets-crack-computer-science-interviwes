@@ -33,6 +33,8 @@ void _fio(void)
 
 }
 
+// T/C O(n) but too much naive approach it is. S/C O(1)
+
 int findLongestConseqSubseq(int arr[], int N)
 {
     unordered_set <int> _elements;
@@ -80,6 +82,75 @@ int findLongestConseqSubseq(int arr[], int N)
     }
     return _length_Of_The_Largest_Subsequence;
 }
+
+// T/C O(nlog(n)) & S/C O(1).
+
+class Solution
+{
+    public:
+
+    int longestConsecutive(vector<int> & nums)
+    {
+        sort(nums.begin(), nums.end());
+
+        int _counter = 1;
+        int _max = 1;
+        int _n = nums.size();
+        
+        if(_n == 0)
+            return 0;
+
+    for(int _i = 1; _i < _n; _i++)
+    {
+        if(nums[_i]-1 == nums[_i - 1])
+        {
+            _counter++;
+        }
+        else if(nums[_i] != nums[_i - 1])
+        {
+            _max = max(_max, _counter);
+            _counter = 1;
+        }
+    } 
+        
+    return max(_counter, _max);
+    }
+
+    // T/C O(3n) and S/C O(1)
+
+    int longestConsecutive(vector<int> & nums)
+    {
+        int _n = nums.size();
+         
+         if(_n == 0)
+            return 0;
+         
+        unordered_set <int> _elem;
+
+        for(int _i = 0; _i < _n; _i++)
+        {
+            _elem.insert(nums[_i]);
+        }
+
+        int _max = INT_MIN;
+
+        for(auto _item : _elem)
+        {
+            if(_elem.find(_item-1) == _elem.end())
+            {
+                int _count = 0;
+
+                while(_elem.find(_item + _count) != _elem.end())
+                {
+                    _count++;
+                }
+
+                _max = max(_max, _count);
+            }
+        }
+        return _max;
+    }
+};
 
 int main(void)
 {

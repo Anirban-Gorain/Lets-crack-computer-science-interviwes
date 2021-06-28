@@ -38,7 +38,7 @@ class Solution
 
     public:
 
-    /* O(n^2) time complexity, And space complexity  O(_nums_1_Unique + _nums_2_Unique) */
+    /* O(n) time complexity, And space complexity  O(2n) */
 
     vector <int> intersection(vector <int> & nums1, vector <int> & nums2)
     {
@@ -55,13 +55,9 @@ class Solution
         for(auto _terverse_Nums_1 = _nums_1_Unique.begin(); _terverse_Nums_1 != _nums_1_Unique.end(); _terverse_Nums_1++)
         {
             _check = *(_terverse_Nums_1);
-            for(auto _terverse_Nums_2 = _nums_2_Unique.begin(); _terverse_Nums_2 != _nums_2_Unique.end(); _terverse_Nums_2++)
+            if(_nums_2_Unique.find(_check) != _nums_2_Unique.end())
             {
-                if(_check == *(_terverse_Nums_2))
-                {
-                    _result.push_back(_check);
-                    break;
-                }
+                _result.push_back(_check);
             }
         }
         return _result;

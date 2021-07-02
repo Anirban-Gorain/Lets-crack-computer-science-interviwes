@@ -74,7 +74,7 @@ int _max_Odd_Even_Length_Subarray_Naive(int _arr[], int _n)
     return _max;
 }
 
-// T/CO(n) and Aux O(1)
+// T/C O(n) and Aux O(1)
 
 int _max_Odd_Even_Length_Subarray(int _arr[], int _n)
 {

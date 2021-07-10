@@ -59,6 +59,32 @@ unordered_set <string> _unique_Subset(string _data, string _subset = "")
     return _result;
 }
 
+// If interviewer says to print only
+
+void _unique(string _ip, string _op, vector<pair<string, string>> & _rec)
+{
+    if(_ip == "")
+    {
+        cout << _op << endl;
+        return;
+    }
+
+    for(int _i = 0; _i < _rec.size(); _i++)
+    {
+        if((_rec[_i].first == _ip && _rec[_i].second == _op))
+        {
+            return;
+        }
+    }
+    
+    _rec.push_back({_ip, _op});
+
+    char _tem = _ip[0];
+    _ip.erase(_ip.begin());
+
+    _unique(_ip, _op + _tem, _rec);
+    _unique(_ip, _op, _rec);
+}
 
 int main(void)
 {
@@ -87,7 +113,7 @@ int main(void)
 
    unordered_set <string> _catch;
 
-   _unique_Subset("aac", "");
+   _catch=_unique_Subset("aac", "");
 
    for(auto _iterator = _catch.begin(); _iterator != _catch.end(); _iterator++)
    {

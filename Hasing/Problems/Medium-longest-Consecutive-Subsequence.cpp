@@ -33,56 +33,6 @@ void _fio(void)
 
 }
 
-// T/C O(n) but too much naive approach it is. S/C O(1)
-
-int findLongestConseqSubseq(int arr[], int N)
-{
-    unordered_set <int> _elements;
-    int _min_In_The_Array = arr[0];
-    int _max_In_The_Array = arr[0];
-
-    for(int _terverse = 0; _terverse < N; _terverse++)
-    {
-        if(_min_In_The_Array > arr[_terverse])
-        {
-            _min_In_The_Array = arr[_terverse];
-        }
-
-        if(arr[_terverse] > _max_In_The_Array)
-        {
-            _max_In_The_Array = arr[_terverse];
-        }
-
-        _elements.insert(arr[_terverse]);
-    }
-
-    int _length_Of_The_Largest_Subsequence = 1;
-    int _cal_Calculate_subsequence = 1;
-    int _checker = _min_In_The_Array;
-
-    while (_max_In_The_Array >= _min_In_The_Array)
-    {
-        _checker++;
-
-        if(_elements.find(_checker) != _elements.end())
-        {
-            _cal_Calculate_subsequence++;
-        }
-        else
-        {
-            if(_cal_Calculate_subsequence > _length_Of_The_Largest_Subsequence)
-            {
-                _length_Of_The_Largest_Subsequence = _cal_Calculate_subsequence;
-            }
-
-            _cal_Calculate_subsequence = 0;
-        }
-
-        _min_In_The_Array++;
-    }
-    return _length_Of_The_Largest_Subsequence;
-}
-
 // T/C O(nlog(n)) & S/C O(1).
 
 class Solution
@@ -100,23 +50,23 @@ class Solution
         if(_n == 0)
             return 0;
 
-    for(int _i = 1; _i < _n; _i++)
-    {
-        if(nums[_i]-1 == nums[_i - 1])
+        for(int _i = 1; _i < _n; _i++)
         {
-            _counter++;
-        }
-        else if(nums[_i] != nums[_i - 1])
-        {
-            _max = max(_max, _counter);
-            _counter = 1;
-        }
-    } 
-        
-    return max(_counter, _max);
+            if(nums[_i]-1 == nums[_i - 1])
+            {
+                _counter++;
+            }
+            else if(nums[_i] != nums[_i - 1])
+            {
+                _max = max(_max, _counter);
+                _counter = 1;
+            }
+        } 
+            
+        return max(_counter, _max);
     }
 
-    // T/C O(3n) and S/C O(1)
+// T/C O(3n) and S/C O(1)
 
     int longestConsecutive(vector<int> & nums)
     {
@@ -164,8 +114,6 @@ int main(void)
 
     int N = 4;
     int a[] = {1,5,8,10};
-
-    cout << findLongestConseqSubseq(a, N);
 
     return 0;
 

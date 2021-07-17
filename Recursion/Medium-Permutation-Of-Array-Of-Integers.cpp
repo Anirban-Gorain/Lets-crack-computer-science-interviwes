@@ -91,8 +91,17 @@ int main(void)
     // #endif
 
     Solution _test;
-    vector <int> _x = {1,2,3,4,5,6};
-    _test.permute(_x);
+    vector <int> _x = {1,2,3};
+    vector<vector<int>> _res = _test.permute(_x);
+
+    for(int _i = 0; _i<_res.size(); _i++)
+    {
+        for(int _j = 0; _j < _res[_i].size(); _j++)
+        {
+            cout << _res[_i][_j] << " ";
+        }
+        cout << "\n";
+    }
 
     return 0;
 

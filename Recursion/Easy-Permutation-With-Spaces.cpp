@@ -65,11 +65,9 @@ class Solution
             _send.push_back(_make_Result);
         }
 
-        _catch_Two = permutation(S);
-
-        for(int _terverse = 0; _terverse < _catch_Two.size(); _terverse++)
+        for(int _terverse = 0; _terverse < _catch_One.size(); _terverse++)
         {
-            string _make_Result = _catch_Two[_terverse];
+            string _make_Result = _catch_One[_terverse];
 
             _make_Result = _make_Result + "" + _temp;
             _send.push_back(_make_Result);
@@ -91,7 +89,7 @@ int main(void)
 
     Solution _test;
 
-    vector <string> _catch = _test.permutation("abc");
+    vector <string> _catch = _test.permutation("abcdef");
 
     for(auto _ite = _catch.begin(); _ite != _catch.end(); _ite++)
     {

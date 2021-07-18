@@ -39,13 +39,13 @@ class Solution
 
     int climbStairs(int n)
     {
-        _print_Steps(n + 1, "");
-        return _no_Of_Steps(++n);
+        _print_Steps(n, "");
+        return _no_Of_Steps(n);
     }
 
     int _no_Of_Steps(int _from_Ground)
     {
-        if(_from_Ground == 1 || _from_Ground < 0)
+        if(_from_Ground == 1)
         {
             return 1;
         }
@@ -64,7 +64,7 @@ class Solution
 
     void _print_Steps(int _from_Ground, string _output)
     {
-        if(_from_Ground == 1 || _from_Ground < 0)
+        if(_from_Ground == 1)
         {
            cout << _output << endl;
            return;
@@ -80,7 +80,7 @@ class Solution
 
     vector <string> _return_Steps(int _from_Ground, string _output)
     {
-        if(_from_Ground == 1 || _from_Ground < 0)
+        if(_from_Ground == 1)
         {
            vector <string> _send;
            _send.push_back(_output);
@@ -117,7 +117,7 @@ int main(void)
     // #endif
 
     Solution _test;
-    cout << _test.climbStairs(10);
+    cout << _test.climbStairs(5);
 
     return 0;
 

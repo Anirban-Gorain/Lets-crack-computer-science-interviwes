@@ -40,75 +40,36 @@ class Solution
 
     vector<string> letterCasePermutation(string S)
     {
-        return this -> _permute_By_Case_Change(S);
-    }
-
-    vector <string> _permute_By_Case_Change(string _main, string _result = "")
-    {
-        if(_main.length() == 0)
+        if(S == "")
         {
-            vector <string> _send;
-            _send.push_back(_result);
+            vector<string> _send;
+            _send.push_back("");
+
             return _send;
         }
 
-        string _digits = "";
-        
-        while(_main[0] >= 48 && _main[0] <= 57)
+        vector<string> _catch;
+        vector<string> _make;
+
+        char _temp = S[0];
+        S.erase(S.begin());
+
+        _catch = letterCasePermutation(S);
+
+        for(int _i = 0; _i < _catch.size(); _i++)
         {
-            _digits += _main[0];
-            _main.erase(_main.begin() + 0);
-        }
+            char _t = toupper(_temp);
 
-        string _lower = "";
-        string _upper = "";
+            _make.push_back(_t + _catch[_i]);
 
-        if(_main.length() > 0)
-        {
-            char _temp_First = _main[0];
-
-            char _lowe_C = tolower(_temp_First);
-            char _upper_C = toupper(_temp_First);
-
-            _lower.append(1, _lowe_C);
-            _upper.append(1, _upper_C);
-
-            _main.erase(_main.begin() + 0);
-        }
-
-
-        if(_lower.length() == 0 && _digits.length() > 0)
-        {
-            vector <string> _c1;
-            _c1 = _permute_By_Case_Change(_main, _result + _digits +_lower);
-            return _c1;
-        }
-        else
-        {
-            vector <string> _c1;
-            vector <string> _c2;
-            vector <string >_result_Send;
-
-            _c1 = _permute_By_Case_Change(_main, _result + _digits +_lower);
-            _c2 = _permute_By_Case_Change(_main, _result + _digits +_upper);
-
-            auto _ite = _c1.begin();
-            while(_ite != _c1.end())
+            if(!(_temp >= 48 && _temp <= 57))
             {
-                _result_Send.push_back(*(_ite));
-                _ite++;
+                _t = tolower(_temp);
+                _make.push_back(_t + _catch[_i]);
             }
-
-            _ite = _c2.begin();
-            while(_ite != _c2.end())
-            {
-                _result_Send.push_back(*(_ite));
-                _ite++;
-            }
-
-            return _result_Send;
         }
 
+        return _make;
     }
 };
 

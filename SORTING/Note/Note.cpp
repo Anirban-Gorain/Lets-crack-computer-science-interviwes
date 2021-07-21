@@ -8,7 +8,7 @@ using namespace std;
 
 /* 
 
-Sort function use to sort and random access container, Random access are those container which gives
+Sort function use to random access container, Random access are those container which gives
 direct i'th element access. 
 
  */

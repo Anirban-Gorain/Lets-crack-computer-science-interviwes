@@ -35,7 +35,7 @@ void _fio(void)
 
 void printMazePaths(int sr, int sc, int dr, int dc, string psf)
 {
-    if(sr == (dr - 1) && sc == (dc - 1))
+    if(sr == (dr) && sc == (dc))
     {
         cout << psf <<endl;
         return;
@@ -43,35 +43,35 @@ void printMazePaths(int sr, int sc, int dr, int dc, string psf)
 
     // Horizontal 1. Horizontal 2, Horizontal 3.
 
-    if(sr + 1 <= dr -1)
+    if(sr + 1 <= dr)
         printMazePaths(sr + 1, sc, dr, dc, psf + "h1");
 
-    if(sr + 2 <= dr - 1)
+    if(sr + 2 <= dr)
         printMazePaths(sr + 2, sc, dr, dc, psf + "h2");
 
-    if(sr + 3 <= dr - 1)
+    if(sr + 3 <= dr)
         printMazePaths(sr + 3, sc, dr, dc, psf + "h3");
 
     // Diagonal 1, Diagonal 2, Diagonal 3.
 
-    if(sr + 1 <= dr -1 && sc + 1 <= dc - 1)
+    if(sr + 1 <= dr && sc + 1 <= dc)
         printMazePaths(sr + 1, sc + 1, dr, dc, psf + "d1");
 
-    if(sc + 2 <= dc - 1 && sr + 2 <= dr - 1)
+    if(sc + 2 <= dc && sr + 2 <= dr)
         printMazePaths(sr + 2, sc + 2, dr, dc, psf + "d2");
 
-    if(sc + 3 <= dc - 1 && sr + 3 <= dr - 1)
+    if(sc + 3 <= dc && sr + 3 <= dr)
         printMazePaths(sr + 3, sc + 3, dr, dc, psf + "d3");
 
     // Vertical 1, Vertical 2, Vertical 3.
 
-    if(sc + 1 <= dc - 1)
+    if(sc + 1 <= dc)
         printMazePaths(sr, sc + 1, dr, dc, psf + "v1");
 
-    if(sc + 2 <= dc - 1)
+    if(sc + 2 <= dc)
         printMazePaths(sr, sc + 2, dr, dc, psf + "v2");
 
-    if(sc + 3 <= dc - 1)
+    if(sc + 3 <= dc)
         printMazePaths(sr, sc + 3, dr, dc, psf + "v3");
 
 }
@@ -86,7 +86,7 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     // #endif
 
-    printMazePaths(0, 0, 3, 3, "");
+    printMazePaths(0, 0, 5, 5, "");
 
     return 0;
 

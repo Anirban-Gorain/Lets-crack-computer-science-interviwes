@@ -82,47 +82,50 @@ class Solution
 
     int trap_(vector<int>& height)
     {
-    /* Insted of querying multiple time for l-max & r-max for individual height[_i] we will pre computed
-        the l-max & r-max accordingly.
+        /*
+        
+            Insted of querying multiple time for l-max & r-max for individual height[_i] we will pre computed
+            the l-max & r-max accordingly.
+
         */
 
-    int _n = height.size();
+        int _n = height.size();
 
-    if(_n==0)
-            return 0;
-        
+        if(_n==0)
+                return 0;
+            
 
-    int _l_Max[_n];
-    int _r_Max[_n];
+        int _l_Max[_n];
+        int _r_Max[_n];
 
-    _l_Max[0] = height[0];
+        _l_Max[0] = height[0];
 
-    loop(_i, 1, _n)
-    {
-        _l_Max[_i] = max(_l_Max[_i-1], height[_i]);
-    }
+        loop(_i, 1, _n)
+        {
+            _l_Max[_i] = max(_l_Max[_i-1], height[_i]);
+        }
 
-    _r_Max[_n-1] = height[_n-1];
+        _r_Max[_n-1] = height[_n-1];
 
-    int _j = _n-2;
+        int _j = _n-2;
 
-    while(_j != -1)
-    {
-        _r_Max[_j] = max(_r_Max[_j+1], height[_j]);
+        while(_j != -1)
+        {
+            _r_Max[_j] = max(_r_Max[_j+1], height[_j]);
 
-        _j--;
-    }
+            _j--;
+        }
 
-    // Calculating how much water containing each individual i's
+        // Calculating how much water containing each individual i's
 
-    int _rain = 0;
+        int _rain = 0;
 
-    loop(_k, 1, _n-1)
-    {
-        _rain += (min(_l_Max[_k], _r_Max[_k]) - height[_k]);
-    }
+        loop(_k, 1, _n-1)
+        {
+            _rain += (min(_l_Max[_k], _r_Max[_k]) - height[_k]);
+        }
 
-    return _rain;
+        return _rain;
     }
 };
 

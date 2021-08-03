@@ -55,6 +55,19 @@ void _insertion_Sort(int _arr[], int _n)
     }
 }
 
+void _insertion_Sort(int _arr[], int _n)
+{
+    for(int _i = 1; _i < _n; _i++)
+    {
+        for(int _j = _i; ((_j > 0) && _arr[_j] < _arr[_j-1]); _j--)
+        {
+            int _t = _arr[_j];
+            _arr[_j] =  _arr[_j-1];
+            _arr[_j-1] = _t;
+        }
+    }
+}
+
 int main(void)
 {
 

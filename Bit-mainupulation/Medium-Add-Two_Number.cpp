@@ -33,45 +33,7 @@ void _fio(void)
 
 }
 
-int _add(int _a, int _b, int _c = 0, int _p = 1, int _res = 0)
-{
-	if(_a == 0 && _b == 0 && _c == 0)
-	{
-		return _res;
-	}
 
-	if((_a & 1) == 0 && (_b & 1) == 0 && _c ==0)
-	{
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-	else if((((_a & 1) == 0 && (_b & 1) == 1) || ((_a & 1) == 1 && (_b & 1) == 0)) && _c == 0)
-	{
-		_res = _res | _p;
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-	else if((_a & 1) == 1 && (_b & 1) == 1 && _c == 0)
-	{
-		_c = _p << 1;
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-	else if((_a & 1) == 1 && (_b & 1) == 1 && (_c & _p) != 0)
-	{
-		_res = _res | _p;
-		_c = _c << 1;
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-	else if((((_a & 1) == 0 && (_b & 1) == 1) || ((_a & 1) == 1 && (_b & 1) == 0)) && (_c & _p) != 0)
-	{
-		_c = _c << 1;
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-	else if((_a & 1) == 0 && (_b & 1) == 0 && (_c & _p) != 0)
-	{
-		_res = _res | _c;
-		_c = 0;
-		return _add(_a >> 1, _b >> 1, _c, _p << 1, _res);
-	}
-}
 
 int main(void)
 {

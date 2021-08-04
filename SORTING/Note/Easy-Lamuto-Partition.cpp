@@ -42,7 +42,7 @@ int _lomuto(int _arr[], int _l, int _h)
     int _i = _l-1;
     int _pivot = _arr[_h-1];
     
-    for(int _j = _l; _j <= _h-2; _j++)
+    for(int _j = _l; _j <= _h-1; _j++)
     {
         if(_arr[_j] < _pivot)
         {

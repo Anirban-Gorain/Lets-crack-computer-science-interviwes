@@ -40,11 +40,11 @@ int _order_Not_Known_Search(int *_elements, int _size, int _key)
         return (_elements[0] == _key) ? 0 : -1;
     }
 
-    if(_elements[0] < _elements[1])
+    if(_elements[0] < _elements[_size-1])
     {
         // Ascending order function call.
     }
-    else if(_elements[0] > _elements[1])
+    else if(_elements[0] > _elements[_size-1])
     {
         // Decending order function call.
     }

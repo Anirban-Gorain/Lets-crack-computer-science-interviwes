@@ -41,8 +41,8 @@ class Solution
         int _col_Size = grid.size();
         int _row_Size = grid[0].size();
 
-        _row = 0;
-        _col = _row_Size - 1;
+        int _row = 0;
+        int _col = _row_Size - 1;
         int _count_Negatives = 0;
 
         while(_row != _col_Size && _col != -1)
@@ -52,7 +52,7 @@ class Solution
                 _count_Negatives += (_col_Size - _row);
                 _col--;
             }
-            else if(grid[_row][_col] > 0)
+            else if(grid[_row][_col] >= 0)
             {
                 _row++;
             }

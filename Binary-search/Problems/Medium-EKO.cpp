@@ -33,30 +33,41 @@ void _fio(void)
 
 }
 
-const int N = 1e6+10;
-
-int _n;
-long long _m;
-
-long long _tress[N];
-
-bool _is_Sufficient_Tree(long long _h)
+bool _validity(vector <ll> & _sizes, ll _m, ll _height)
 {
+    ll _cutted_Wood = 0;
 
-    long long _required_Amount_Of_Wood = 0;
-
-    loop(_i, 0, _n)
+    for(auto _x : _sizes)
     {
+        if(_x > _height)
+            _cutted_Wood += (_x - _height);
+    }
 
-        if(_tress[_i] >= _h)
+    return (_cutted_Wood >= _m) ? 1 : 0;
+}
+
+int _get_Max_Height(vector <ll> & _sizes, ll _m)
+{
+    // ll _max_Tree_Height = *max_element(_sizes.begin(), _sizes.end());
+
+    ll _low = 1; ll _max = 1e9, _height, _ans;
+
+    while(_low < _max)
+    {
+        _height = _low - (_low - _max)/2;
+
+        if(_validity(_sizes, _m, _height))
         {
-            // Adding wood
-            
-            _required_Amount_Of_Wood += (_tress[_i] -_h);
+            _ans = _height;
+            _low = _height+1;
+        }
+        else
+        {
+            _max = _height-1;
         }
     }
 
-    return _required_Amount_Of_Wood >= _m;
+    return _ans;
 }
 
 int main(void)
@@ -69,40 +80,20 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     #endif
 
+    ll _n, _m;
+
     cin >> _n >> _m;
 
-    loop(_i, 0, _n)
+    vector <ll> _sizes(_n);
+
+    for(auto & _x : _sizes)
     {
-        cin >> _tress[_i];
+        cin >> _x;
     }
 
-    long long _low = 0, _high = 1e9, _mid;
+    ll _tem = _get_Max_Height(_sizes, _m);
 
-    // T T T T T T F F F F F
-
-    while (_low < _high-1)
-    {
-        _mid =_low +  (_high - _low)/2; 
-
-        if(_is_Sufficient_Tree(_mid))
-        {
-            _low = _mid;
-        }
-        else
-        {
-            _high = _mid - 1;
-        }
-    }
-    
-    if(_is_Sufficient_Tree(_high))
-    {
-        cout << _high;
-    }
-    else
-    {
-        cout << _low;
-    }
+    cout << _tem;
 
     return 0;
-
 }

@@ -59,11 +59,11 @@ class Solution
             {
                 return _mid;
             }
-            else if(!(arr[_mid] < arr[n-1]))
+            else if((arr[_mid] > arr[n-1]))
             {
                 _start = _mid + 1;
             }
-            else if(!(arr[_mid] > arr[0]))
+            else if((arr[_mid] < arr[0]))
             {
                 _end = _mid - 1;
             }

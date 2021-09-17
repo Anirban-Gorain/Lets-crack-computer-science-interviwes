@@ -23,4 +23,18 @@
 
     => When a structure contain a pointer of type itself those structure are called self referential structure.
 
+    Advantages and disadvantages between singly and doubly linked list--
+
+    Advantages of singly linkded list :
+
+        1) Can be terversed in both the direction. Which can't be done in singly linked list.
+        2) A given node can be delete in O(1) time with given reference or pointer to it. Which can be done in singly linked list for last node it won't work.
+        3) Insert and delete before a given node. But in single linked list can't be done at all.
+        4) Insert and delete from both the ends in O(1) time by maintaining the tail.
+
+    Disadvantages of singly linkded list :
+
+        1) Extra space for _prev pointer.
+        2) Code become more complex.
+
  */

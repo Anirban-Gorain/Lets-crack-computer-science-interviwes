@@ -33,7 +33,7 @@ void _fio(void)
 
 }
 
-// Merge function  of "Merge-sort".
+// Merge function  of "Merge-sort". Merge sort is a stable sorting algorithm.
 
 /* 
 
@@ -56,6 +56,8 @@ void _fio(void)
     sort analysis by Sandeep sir]
 
 */
+
+// T/C O(n*log(n)) and Aux space O(n)
 
 void _merge_Sort(int _arr[], int _l, int _r)
 {

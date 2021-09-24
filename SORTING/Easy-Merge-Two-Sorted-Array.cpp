@@ -83,7 +83,7 @@ void _merge_2(int _arr1[], int _arr2[], int _m, int _n)
         else
         {
             _res[_k]=_arr1[_j];
-            _res[_k]=_arr1[_j];
+            _res[_k+1]=_arr1[_j];
             _i++;
             _j++;
         }

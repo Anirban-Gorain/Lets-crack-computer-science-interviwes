@@ -33,87 +33,10 @@ void _fio(void)
 
 }
 
-// T/C O(m+n) and Aux space O(2n)
-
-vector<int> _union(int _arr1[], int _arr2[], int _x, int _y)
-{
-    int _i, _j, _m, _n;
-    _m = _x; _n = _y;
-    _i = _j = 0;
-    v(int) _res;
-    unordered_set<int> _res_Non_Sorted; // In order to handle duplicate/ If required output not needed in sorted order then we can print it.
-
-    while(_i < _m && _j < _n)
-    {
-        if(_res_Non_Sorted.find(_arr1[_i]) != _res_Non_Sorted.end())
-        {
-            _i++;
-            continue;
-        }
-
-        if(_res_Non_Sorted.find(_arr2[_j]) != _res_Non_Sorted.end())
-        {
-            _j++;
-            continue;
-        }
-
-        if(_arr1[_i] == _arr2[_j])
-        {
-            _res.push_back(_arr1[_i]);
-
-            _res_Non_Sorted.insert(_arr1[_i]);
-
-            _i++; _j++;
-        }
-        else if(_arr1[_i] > _arr2[_j])
-        {
-            _res.push_back(_arr2[_j]);
-
-            _res_Non_Sorted.insert(_arr2[_j]);
-
-            _j++;
-        }
-        else if(_arr1[_i] < _arr2[_j])
-        {
-            _res.push_back(_arr1[_i]);
-
-            _res_Non_Sorted.insert(_arr1[_i]);
-
-            _i++;
-        }
-    }
-
-    while (_i < _m)
-    {
-        if(_i > 0 && _arr1[_i] == _arr1[_i - 1])
-        {
-            _i++;
-            continue;
-        }
-
-        _res.push_back(_arr1[_i]);
-        _i++;
-    }
-
-    while (_j < _n)
-    {
-        if(_j > 0 && _arr2[_j] == _arr2[_j - 1])
-        {
-            _j++;
-            continue;
-        }
-
-        _res.push_back(_arr2[_j]);
-        _j++;
-    }
-    
-    return _res;
-}
-
 // T/C O(m+n) and Aux space O(n)
 
 vector<int> _union1(int _arr1[], int _arr2[], int _x, int _y)
-{ 
+{
     int _i, _j, _m, _n;
     _m = _x; _n = _y;
     _i = _j = 0;

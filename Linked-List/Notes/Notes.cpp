@@ -25,16 +25,26 @@
 
     Advantages and disadvantages between singly and doubly linked list--
 
-    Advantages of singly linkded list :
+    Advantages of doubly linkded list :
 
         1) Can be terversed in both the direction. Which can't be done in singly linked list.
         2) A given node can be delete in O(1) time with given reference or pointer to it. Which can be done in singly linked list for last node it won't work.
         3) Insert and delete before a given node. But in single linked list can't be done at all.
         4) Insert and delete from both the ends in O(1) time by maintaining the tail.
 
-    Disadvantages of singly linkded list :
+    Disadvantages of doubly linkded list :
 
         1) Extra space for _prev pointer.
         2) Code become more complex.
+
+    Circular linked list?
+
+    Circular linked is a linked list where all the linked list are connected to form a circle. There is no NULL at the end a circular linked list can be single or double circular linked list.
+
+    Advantages,
+
+        1) Any can be consider as a starting point, We can terverse whole list by terverse from any point. We just need to stop when the first visited node is visited again.
+        2) Useful for implement queue, We can insert at before head and after tail by maintaining only one pointer tail.
+        3) Useful to implement scheduling algorithms.
 
  */

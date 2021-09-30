@@ -51,7 +51,7 @@ int _count_Inversions(int _arr[], int _n)
     return _cnt;
 }
 
-// T/C O() and Aux space O()
+// T/C O(2n) and Aux space O(n)
 
 int _merge(int _arr[], int _mid, int _l, int _r)
 {

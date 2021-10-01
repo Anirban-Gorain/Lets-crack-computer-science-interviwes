@@ -47,4 +47,24 @@
         2) Useful for implement queue, We can insert at before head and after tail by maintaining only one pointer tail.
         3) Useful to implement scheduling algorithms.
 
+    Circular doubly linked list (https://www.geeksforgeeks.org/doubly-circular-linked-list-set-1-introduction-and-insertion/)?
+
+    Prev of head is last node. Last of head is first node.
+
+    Advantages :
+    
+        1) All the advantages of Circular + Doubly linked list.
+        2) Used to implement adv DS like fibonacci heap.
+        3) Can be done insertion/deletion from any node.
+    
+    Disadvantages :
+
+        1) It takes slightly extra memory in each node to accommodate the previous pointer.
+        2) Lots of pointers involved while implementing or doing operations on a list. So, pointers should be handled carefully otherwise data of the list may get lost.
+
+    Application :
+
+        1) Managing songs playlist in media player applications.
+        2) Managing shopping cart in online shopping.
+
  */

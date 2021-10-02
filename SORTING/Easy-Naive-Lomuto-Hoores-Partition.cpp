@@ -33,6 +33,49 @@ void _fio(void)
 
 }
 
+// Naive, Stable solution, Non in-place
+
+// T/C O(4n) and Aux space O(n)
+
+void _partion(int _arr[], int _l, int _h, int _p)
+{
+
+    int _temp[_h-_l+1];
+
+    int _index = 0;
+
+    for(int _i = 0; _i < _h; _i++)
+    {
+        if(_arr[_i] < _arr[_p])
+        {
+            _temp[_index++] = _arr[_i];
+        }
+    }
+
+    for(int _i = 0; _i < _h; _i++)
+    {
+        if(_arr[_i] == _arr[_p])
+        {
+            _temp[_index++] = _arr[_i];
+        }
+    }
+
+    for(int _i = 0; _i < _h; _i++)
+    {
+        if(_arr[_p] < _arr[_i])
+        {
+            _temp[_index++] = _arr[_i];
+        }
+    }
+
+    for(int _i = 0; _i < _h; _i++)
+    {
+        _arr[_i] = _temp[_i];
+    }
+}
+
+// Lomuto partition, Not stable, Inplace
+
 // T/C O(n) and Aux space O(1)
 
 int _lomuto(int _arr[], int _l, int _h)
@@ -57,6 +100,40 @@ int _lomuto(int _arr[], int _l, int _h)
     return _i;
 }
 
+// Hoores partition, Inplace
+
+int _hoores_Partition(int _arr[], int _l, int _h)
+{
+    // We can take a give pivot by swapping the first element and given pivot.
+
+    int _i, _j, _pivot;
+
+    _i = _l-1;
+    _j = _h; // _h should be the size of the array.
+    _pivot = _arr[_l];
+
+    while (true)
+    {
+        do
+        {
+            _i++;
+
+        } while (_arr[_i] < _pivot);
+        
+        do
+        {
+            _j--;
+
+        } while (_arr[_j] > _pivot);
+        
+        if(_i >= _j) return _j;
+
+        swap(_arr[_i], _arr[_j]);
+    }
+    
+    return _j;
+}
+
 int main(void)
 {
 
@@ -67,12 +144,13 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     #endif
 
-    int _arr[] = {10, 80, 30, 90, 40, 50, 70};
+    // What's here
 
-    _lomuto(_arr, 0, 7);
+    /* 
+    
+        a1, a2, ... < p <= b1, b2, ...
 
-    for(auto _x : _arr)
-        cout << _x << " ";
+    */
 
     return 0;
 

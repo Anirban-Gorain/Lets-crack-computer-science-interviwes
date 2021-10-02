@@ -33,6 +33,8 @@ void _fio(void)
 
 }
 
+// Quick sort using lomuto
+
 int _lamuto(int _arr[], int _l, int _h)
 {
     int _pivot = _arr[_h];
@@ -53,14 +55,55 @@ int _lamuto(int _arr[], int _l, int _h)
     return _i;
 }
 
-void _quick_Sort(int _arr[], int _l, int _h)
+void _quick_Sort_Using_Lomuto(int _arr[], int _l, int _h)
 {
     if(_l < _h)
     {
         int _pivot = _lamuto(_arr, _l, _h);
 
-        _quick_Sort(_arr, _l, _pivot-1);
-        _quick_Sort(_arr, _pivot+1, _h);
+        _quick_Sort_Using_Lomuto(_arr, _l, _pivot-1);
+        _quick_Sort_Using_Lomuto(_arr, _pivot+1, _h);
+    }
+}
+
+// Quick sort using hoores
+
+int _hoores(int _arr[], int _l, int _h)
+{
+    int _pivot = _arr[_l];
+    int _i = _l-1; // Before the Start.
+    int _j = _h+1; // Beyond the High.
+
+    while (true)
+    {
+        do
+        {
+            _i++;
+        } while (_arr[_i] < _pivot);
+
+        do
+        {
+            _j--;
+        } while (_arr[_j] > _pivot);
+
+        if(_i >= _j) return _i;
+
+        swap(_arr[_i], _arr[_j]);
+    }
+
+    return _i;    
+}
+
+// T/C O(n^2) and Aux space O(n)
+
+void _quick_Sort_Using_Hoores(int _arr[], int _l, int _h)
+{
+    if(_l < _h)
+    {    
+        int _pivot = _hoores(_arr, _l, _h);
+
+        _quick_Sort_Using_Hoores(_arr, _l, _pivot);
+        _quick_Sort_Using_Hoores(_arr, _pivot+1, _h);
     }
 }
 
@@ -76,7 +119,16 @@ int main(void)
 
     int _arr[] = {5,4,3,2,1,10,9,8,7,6};
 
-    _quick_Sort(_arr, 0, 9);
+    _quick_Sort_Using_Lomuto(_arr, 0, 9);
+
+    for(int _x : _arr)
+    {
+        cout << _x << " ";
+    }
+
+    int _arr2[] = {5,4,3,2,1,10,9,8,7,6}; cout << "\n\n";
+
+    _quick_Sort_Using_Lomuto(_arr, 0, 9);
 
     for(int _x : _arr)
     {

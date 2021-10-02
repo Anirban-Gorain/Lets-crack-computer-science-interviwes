@@ -33,6 +33,8 @@ void _fio(void)
 
 }
 
+// This sol still need O(n) stack space for sorting a decreasing array.
+
 void _quick_Sort(int _arr[], int _l, int _h)
 {
     _begin:
@@ -50,6 +52,37 @@ void _quick_Sort(int _arr[], int _l, int _h)
     }
 }
 
+// Highly optimized quick sort, Worst case stack space O(log(n)) when array divded into two parts, When array was sorted reverse order or all elements was same, it was giving stack space of O(n) but now it will take O(1) only.
+
+void quickSort(int arr[], int low, int high)
+{
+    _start:
+
+    if (low < high)
+    {
+
+        int pi;
+        // pi = partition(arr, low, high);
+ 
+        // Which part is smaller recur for that part, then again recur after iteration (Updating the parameters) but in decresing order recur won't satisfy that is way it is optimized.
+
+        if (pi - low < high - pi)
+        {
+            quickSort(arr, low, pi - 1);
+            low = pi + 1;
+        }
+ 
+        // Else recur for right part
+        else
+        {
+            quickSort(arr, pi + 1, high);
+            high = pi - 1;
+        }
+
+        goto _start;
+    }
+}
+
 int main(void)
 {
 
@@ -61,10 +94,12 @@ int main(void)
     #endif
 
     /* 
-    
-        The purpose of Tail-eliminenation is to reduce the worst case time complexity from O(n) to log(n).
 
-        We can eleminate any any tail recursive call in which after that recursive call not needed to do any thing.
+        Basically there are two things first, Tail recursive (No operation with return value of function call so to achieve required goals use additional parameter, https://www.youtube.com/watch?v=Wpkh5YSqwqg) and second thing is, Tail elimination is  tail recursive cal we can remove which is known as tail call elemination it reduce space complexity.
+    
+        In Quick sort the purpose of Tail-eliminenation is to reduce the worst case space complexity from O(n) to log(n).
+
+        Ex of tail call elemination,
 
         void _print(int _n)
         {

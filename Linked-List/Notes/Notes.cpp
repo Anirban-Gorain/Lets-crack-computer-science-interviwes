@@ -2,7 +2,7 @@
 
 /* 
 
-    Linked list and array both are linear data structure.
+    * Linked list and array both are linear data structure.
 
     Different problems with arrays --
 
@@ -19,7 +19,7 @@
     3) Direct access not possible in linked list because no indices are there.
     4) Reverse traversing is not possible in singly linked list however in doubly linked list it is possible.
 
-    What is self referential structure?
+    * What is self referential structure?
 
     => When a structure contain a pointer of type itself those structure are called self referential structure.
 
@@ -37,7 +37,7 @@
         1) Extra space for _prev pointer.
         2) Code become more complex.
 
-    Circular linked list?
+    * Circular linked list?
 
     Circular linked is a linked list where all the linked list are connected to form a circle. There is no NULL at the end a circular linked list can be single or double circular linked list.
 
@@ -66,5 +66,16 @@
 
         1) Managing songs playlist in media player applications.
         2) Managing shopping cart in online shopping.
+
+    * Unrolled linked list.
+
+    Advantages : 
+    
+    1) Cache friendly (Locality of reference) for using array.
+    2) Increases efficiency.
+
+    Disadvantages : 
+
+    1) If we are using a bigger size array, Then we are encouraging a to occupy more more cache memory even if we are not using the entire array.
 
  */

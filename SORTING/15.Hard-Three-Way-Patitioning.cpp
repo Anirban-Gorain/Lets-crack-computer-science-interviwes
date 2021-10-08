@@ -159,7 +159,7 @@ int main(void)
 
     cout << "\n\n";
 
-    vector <int> _elem3 = {1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32};
+    vector <int> _elem3 = {1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32, 10};
 
     _sort_Pivot_Range(_elem3, 10, 20);
 

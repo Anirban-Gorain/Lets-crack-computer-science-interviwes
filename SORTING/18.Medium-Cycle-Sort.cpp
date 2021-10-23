@@ -126,7 +126,7 @@ int main(void)
 
     /* 
     
-        1) This algorithm need minimum memory write.
+        1) This algorithm needs minimum memory write.
         2) In place & not stable.
         3) Useful to solve question like Find min swaps required to sort.
     

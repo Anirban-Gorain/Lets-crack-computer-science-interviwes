@@ -102,7 +102,7 @@ void _quick_Sort_Using_Hoores(int _arr[], int _l, int _h)
     {    
         int _pivot = _hoores(_arr, _l, _h);
 
-        _quick_Sort_Using_Hoores(_arr, _l, _pivot);
+        _quick_Sort_Using_Hoores(_arr, _l, _pivot-1);
         _quick_Sort_Using_Hoores(_arr, _pivot+1, _h);
     }
 }

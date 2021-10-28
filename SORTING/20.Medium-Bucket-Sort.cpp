@@ -94,9 +94,9 @@ int main(void)
         These are the follwing two cases where most suitable algorithm for sorting is Bucket sort.
 
         1) Consider a situation where we have number uniformly distributed between range from [0, 10^8].
-        2) Consider a another situation where we have floting point numbers uniformly distributed in the range form [0.0, 0.1).
+        2) Consider a another situation where we have floting point numbers uniformly distributed in the range form [0.0, 1).
 
-        What does mean of Uniformly distribution : If there are 1000 numbers & the range [0.0, 0.1), If this range has to be divided into 10 equal parts then from each part will belong 100 numbers and this division of elements to be called as "Uniformly divided".
+        What does mean of Uniformly distribution : If there are 1000 numbers & the range [0.0, 1), If this range has to be divided into 10 equal parts then from each part will belong 100 numbers and this division of elements to be called as "Uniformly divided".
 
         Bucket sort :
 

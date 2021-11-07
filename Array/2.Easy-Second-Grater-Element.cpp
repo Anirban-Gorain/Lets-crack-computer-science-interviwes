@@ -47,34 +47,20 @@ int _largest(int _arr[], int _size)
 
 int _second_Largest(int _arr[], int _size, int _largest)
 {
-    int _sec_Largest_Elem;
-    int _is_All_Same = 0;
+    int _sec_Largest_Elem = -1;
 
     for(int _i = 0; _i < _size; _i++)
     {
         if(_arr[_i] < _largest)
         {
-            _sec_Largest_Elem = _arr[_i];
-            _is_All_Same = 1;
-            break;
-        }
-    }
-
-    if(_is_All_Same == 0)
-        return -1;
-
-    for(int _i = 0; _i < _size; _i++)
-    {
-        if(_arr[_i] > _sec_Largest_Elem && _arr[_i] != _largest)
-        {
-            _sec_Largest_Elem = _arr[_i];
+            _sec_Largest_Elem = max(_sec_Largest_Elem, _arr[_i]);
         }
     }
 
     return _sec_Largest_Elem;
 }
 
-int _second_Largest(int _arr[], int _size, int _largest)
+int _second_Largest_2(int _arr[], int _size, int _largest)
 {
     /*
 
@@ -90,6 +76,8 @@ int _second_Largest(int _arr[], int _size, int _largest)
         }
         
     */
+
+    return 0;
 }
 
 int main(void)
@@ -102,7 +90,7 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     // #endif
 
-    int _arr[] = {10, 10, 10};
+    int _arr[] = {10, 3, 10};
 
     int _temp = _largest(_arr, 3);
     cout << _second_Largest(_arr, 3, _temp);

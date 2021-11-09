@@ -1,0 +1,148 @@
+#include<bits/stdc++.h>
+#include<iostream>
+
+using namespace std;
+
+#define f first
+#define s second
+#define ll long long
+#define pub .push_back()
+#define pob .push_back()
+#define mp make_pair
+#define p(_x, y) pair<_x, y>
+#define v(_x) vector<_x>
+#define m(_x, y) map<_x, y>
+#define pq(_x) priority_queue<_x>
+#define setbits(_x) __builtin_popcountll(_x)
+#define zrobits(_x) __builtin_ctzll(_x)
+#define sp(_x, y) fi_xed<<setprecision(y)<<_x
+#define dma(arr,n,type) type *arr=new type[n];
+#define w(_x) int _x; while(_x--)
+#define sq(_x) _x*_x
+#define its(_x) (string) #_x
+#define sti(_x) (int) _x
+#define fti(_x) (int) _x
+#define deb(_x) cout << #_x << " = " << _x << endl;
+#define loop(_x, _s ,_n) for(int _x = _s; _x < _n; ++ _x)
+
+void _fio(void)
+{
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+}
+
+class _two_Stack
+{
+    private :
+
+    int *_arr;
+    int _cap;
+    int _top1 = -1;
+    int _top2;
+
+    public :
+
+    _two_Stack(int _cap)
+    {
+        this->_cap = _cap;
+        _top2 = _cap;
+        _arr = new int[_cap];
+    }
+
+    void _push1(int _elem)
+    {
+        if(_top2 - _top1 == 1)
+        {
+            cout << "Both stack is full \n";
+            return;
+        }
+
+        _arr[++_top1] = _elem;
+    }
+
+    void _push2(int _elem)
+    {
+        if(_top2 - _top1 == 1)
+        {
+            cout << "Both stack is full \n";
+            return;
+        }
+
+        _arr[--_top2] = _elem;
+    }
+
+    int _pop1()
+    {
+        if(_top1 == -1)
+        {
+            cout << "Stack 1 is empty \n";
+            return -1;
+        }
+
+        return _arr[_top1--];
+    }
+
+    int _pop2()
+    {
+        if(_top2 == _cap)
+        {
+            cout << "Stack 2 is empty \n";
+            return -1;
+        }
+
+        return _arr[_top2++];
+    }
+
+    int _size1()
+    {
+        return _top1+1;
+    }
+
+    int _size2()
+    {
+        return _cap-_top2;
+    }
+
+    int _empty1()
+    {
+        return (_top1 == -1);
+    }
+
+    int _empty2()
+    {
+        return (_top2 == _cap);
+    }
+};
+
+int main(void)
+{
+
+    _fio();
+
+    #ifndef ONLINE_JUDGE
+        freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/input.txt", "r", stdin);
+        freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
+    #endif
+
+    _two_Stack _test_Stack(10);
+
+    _test_Stack._push1(5);
+    _test_Stack._push2(50);
+    _test_Stack._push1(8);
+    _test_Stack._push2(30);
+    cout << _test_Stack._pop1() << " ";
+    cout << _test_Stack._pop2() << " ";
+    cout << _test_Stack._size2() << " ";
+    cout << _test_Stack._size1() << " ";
+    cout << _test_Stack._pop1() << " ";
+    cout << _test_Stack._pop2() << " ";
+    cout << _test_Stack._size1() << " ";
+    cout << _test_Stack._size2() << " ";
+    cout << _test_Stack._pop1() << " ";
+    cout << _test_Stack._pop2() << " ";
+
+    return 0;
+
+}

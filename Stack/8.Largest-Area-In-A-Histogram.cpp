@@ -122,6 +122,38 @@ int _largest_Rect_Area_In_Histo(vector<int> _arr)
     return _res;
 }
 
+// T/C O(n) and Aux space O(n)
+
+int _largest_Rect_Area_In_Histo(vector<int> _arr)
+{
+    int _res = 0;
+    int _n = _arr.size();
+    stack<int> _s;
+
+    for(int _i = 0; _i < _n; _i++)
+    {
+        while(_s.empty() == false && _arr[_s.top()] >= _arr[_i])
+        {
+            // Calculating area.
+
+            int _top = _s.top();
+            _s.pop();
+
+            int _area = _arr[_top] * (_s.empty() ? _i : (_i - _s.top() - 1));
+            _res = max(_area, _res);
+        }
+
+        while(_s.empty() == false)
+        {
+            int _top = _s.top();
+            _s.pop();
+
+            int _area = _arr[_top] * (_s.empty() ? _n : (_n - _s.top() - 1));
+            _res = max(_area, _res);
+        }
+    }
+}
+
 int main(void)
 {
 

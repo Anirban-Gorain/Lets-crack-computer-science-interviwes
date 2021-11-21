@@ -33,97 +33,6 @@ void _fio(void)
 
 }
 
-// T/C O(n^2) and Aux space O(1)
-
-int _largest_Rect_Area_In_Histo_Naive(vector<int> _arr)
-{
-    int _n = _arr.size();
-    int _res = INT_MIN;
-
-    for(int _i = 0; _i < _n; _i++)
-    {
-        int _cnt = _arr[_i];
-
-        // Before current
-
-        for(int _j = _i-1; _j != -1; _j--)
-        {
-            if(_arr[_j] >= _arr[_i])
-                _cnt += _arr[_i];
-            else
-                break;
-        }
-
-        // After current
-
-        for(int _j = _i+1; _j < _n; _j++)
-        {
-            if(_arr[_j] >= _arr[_i])
-                _cnt += _arr[_i];
-            else
-                break;
-        }
-
-        _res = max(_res, _cnt);
-    }
-
-    return _res;
-}
-
-// T/C O(3n) and Aux space O(2n)
-
-int _largest_Rect_Area_In_Histo(vector<int> _arr)
-{
-    int _res = 0;
-    int _n = _arr.size();
-    int _ps[_n], _ns[_n];
-    
-    stack <int> _s;
-
-    _s.push(0);
-
-    for(int _i = 0; _i < _n; _i++)
-    {
-        while(_s.empty() == false && _arr[_s.top()] >= _arr[_i])
-            _s.pop();
-
-        int _pse = _s.empty() ? -1 : _s.top();
-        _ps[_i] = _pse;
-        _s.push(_i);
-    }
-    
-    while(_s.empty() == false)
-    {
-        _s.pop();
-    }
-    
-    _s.push(_n - 1);
-
-    for(int _i = _n-1; _i > 0; _i--)
-    {
-        while(_s.empty() == false && _arr[_s.top()] >= _arr[_i])
-            _s.pop();
-
-        int _nse = _s.empty() ? _n : _s.top();
-        _ns[_i] = _nse;
-        _s.push(_i);
-    }
-    
-    for(int _i = 0 ; _i < _n; _i++)
-    {
-        int _curr = _arr[_i];
-
-        _curr += (_i-_ps[_i]-1) * _arr[_i];
-        _curr += (_ns[_i]-_i-1) * _arr[_i];
-
-        _res = max(_res, _curr);
-    }
-
-    return _res;
-}
-
-// T/C O(n) and Aux space O(n)
-
 int _largest_Rect_Area_In_Histo(int _arr[], int _n)
 {
     int _res = 0;
@@ -157,6 +66,36 @@ int _largest_Rect_Area_In_Histo(int _arr[], int _n)
     return _res;    
 }
 
+const int _r = 4;
+const int _c = 4;
+
+// T/C O(r*c) and Aux space O(n)
+
+int _largest_Matrix_With_All_Ones(int _arr[_r][_c])
+{
+    int _container[_r] = {};
+    int _res = INT_MIN;
+
+    // for(auto _x : _container)
+    //     _x = 0;
+
+    for(int _r1 = 0; _r1 < _r; _r1++)
+    {
+        for(int _c1 = 0; _c1 < _c; _c1++)
+        {
+            if(_arr[_r1][_c1] == 1)
+                _container[_c1] += _arr[_r1][_c1];
+            else
+                _container[_c1] = 0;
+        }
+
+        int _temp = _largest_Rect_Area_In_Histo(_container, _c);
+        _res = max(_res, _temp);
+    }
+
+    return _res;
+}
+
 int main(void)
 {
 
@@ -167,9 +106,14 @@ int main(void)
         freopen("C:/Users/Anirban Gorain/Desktop/Competitive-programming/output.txt", "w", stdout);
     #endif
 
-    vector<int> _arr = {2, 5, 1};
+    int _arr[_r][_c] = {
+                            {0, 1, 1, 0},
+                            {1, 1, 1, 1},
+                            {1, 1, 1, 1},
+                            {1, 1, 0, 0}
+                        };
 
-    cout << _largest_Rect_Area_In_Histo(_arr);
+    cout << _largest_Matrix_With_All_Ones(_arr);
 
     return 0;
 
